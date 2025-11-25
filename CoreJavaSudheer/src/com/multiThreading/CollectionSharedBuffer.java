@@ -5,10 +5,10 @@ import java.util.List;
 
 class Resource3{
 	    int i;
-	   List<Integer> li=new ArrayList<>();
+	   List<Integer> li=new ArrayList<>();  // Shared List 
 	     boolean status= false;
 	  
-	   synchronized void put(int i) throws InterruptedException {
+	   synchronized void put(int i) throws InterruptedException {  // put() used to add the elements in synchronized way
 		  if(status) {
 			  wait();
 		  }
@@ -19,7 +19,7 @@ class Resource3{
 		   notify();
 	  }
 	  
-	  synchronized void get() throws InterruptedException {
+	  synchronized void get() throws InterruptedException {    //get() used to add the elements in synchronized way
 		  if(!status) {
 			  wait();
 		  }
@@ -31,8 +31,8 @@ class Resource3{
 	  }
 }
 //Producer which produces to the Resources
-
-class Producer3 implements Runnable{
+ 
+class Producer3 implements Runnable{     // producer class which calls put() method to add elements to List
 	 Resource3 r;
 	 public Producer3(Resource3 r) {
 		 this.r = r;
@@ -59,7 +59,7 @@ class Producer3 implements Runnable{
 }
 //Consumer which consumes from the Resources
 
-class Consumer3 implements Runnable{
+class Consumer3 implements Runnable{          // Consumer class which calls get() method to remove elements from List
 	 Resource3 r;
 	 public Consumer3(Resource3 r) {
 		 this.r=r;
@@ -93,3 +93,4 @@ public class CollectionSharedBuffer {
 	}
 
 }
+
