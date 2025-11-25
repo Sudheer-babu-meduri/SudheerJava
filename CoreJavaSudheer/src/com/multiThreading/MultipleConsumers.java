@@ -45,9 +45,9 @@ package com.multiThreading;
  class Producer1 implements Runnable {
 	Resource1 r;
 
-	public Producer1(Resource1 r) {
+	public Producer1(Resource1 r) {    
 		this.r = r;
-		Thread t = new Thread(this, "Producer");
+		Thread t = new Thread(this, "Producer");   // passing current Thread Object and name of Thread
 		t.start();
 	}
 
@@ -70,10 +70,10 @@ class Consumer1 implements Runnable {
     Resource1 r;
     int id;
 
-    public Consumer1(Resource1 r, int id) {
+    public Consumer1(Resource1 r, int id) {         
         this.r = r;
         this.id = id;
-        Thread t=new Thread(this, "Consumer");
+        Thread t=new Thread(this, "Consumer");           // passing current Thread Object and name of Thread
         t.start();
     }
 
@@ -101,4 +101,5 @@ public class MultipleConsumers {
 	        new Consumer1(r,3);
 	}
 }
+
 
