@@ -4,7 +4,7 @@ package com.multiThreading;
 	  int i;
 	  boolean status= false;
 	  
-	   synchronized void put(int i) throws InterruptedException {
+	   synchronized void put(int i) throws InterruptedException {   // put() used to add the elements in synchronized way
 		  if(status) {
 			  wait();
 		  }
@@ -14,7 +14,7 @@ package com.multiThreading;
 		   notify();
 	  }
 	  
-	  synchronized void get() throws InterruptedException {
+	  synchronized void get() throws InterruptedException {      // get() used to remove the elements in synchronized way
 		  if(!status) {
 			  wait();
 		  }
@@ -24,9 +24,9 @@ package com.multiThreading;
 		  
 	  }
   }
-//Producer which produces to the Resources
+ 
 
- class Producer implements Runnable{
+ class Producer implements Runnable{     //Producer which produces to the Resources
 	 Resource r;
 	 public Producer(Resource r) {
 		 this.r = r;
@@ -50,9 +50,9 @@ package com.multiThreading;
 	 }
 	 
  }
-// Consumer which consumes from the Resources
  
- class Consumer implements Runnable{
+ 
+ class Consumer implements Runnable{     // Consumer which consumes from the Resources
 	 Resource r;
 	 public Consumer(Resource r) {
 		 this.r=r;
@@ -86,3 +86,4 @@ public class ProducerConsumer {
  	}
 
 }
+
