@@ -1,3 +1,4 @@
+//producer adds the element and multiple consumers consumes the element one after another
 package com.multiThreading;
 
 //Shared Resource
@@ -13,8 +14,9 @@ package com.multiThreading;
         this.i = i;
         System.out.println("Put: " + i);
         status = true;
-        notifyAll();
+        notifyAll();           // calling Threads which are in waiting state
     }
+    
 
     synchronized void get(int consumerId) throws InterruptedException {
         while (!status || turn != consumerId) {
@@ -34,7 +36,7 @@ package com.multiThreading;
         	turn = 1;
         }
 
-        notifyAll();
+        notifyAll();   // calling Threads which are in waiting state
     }
 }
 
@@ -99,3 +101,4 @@ public class MultipleConsumers {
 	        new Consumer1(r,3);
 	}
 }
+
